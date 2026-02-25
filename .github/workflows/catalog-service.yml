@@ -2,8 +2,6 @@ name: Catalog Service CI/CD
 
 on:
   push:
-    paths:
-      - catalog-service/**
     branches:
       - main
 
