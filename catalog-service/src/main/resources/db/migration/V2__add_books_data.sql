@@ -1,0 +1,16 @@
+INSERT INTO products(code, name, description, image_url, price) VALUES
+('P100','The Hunger Games','Winning will make you famous. Losing means certain death...','https://images.gr-assets.com/books/1447303603l/2767052.jpg', 34.00),
+('P101','To Kill a Mockingbird','The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it...','https://images.gr-assets.com/books/1361975680l/2657.jpg', 45.40),
+('P102','The Chronicles of Narnia','Journeys to the end of the world...','https://images.gr-assets.com/books/1449868701l/11127.jpg', 44.50),
+('P103','Gone with the Wind','Novel written by Margaret Mitchell','https://images.gr-assets.com/books/1328025229l/18405.jpg',44.50),
+('P104','The Fault in Our Stars','Despite the tumor-shrinking medical miracle...','https://images.gr-assets.com/books/1360206420l/11870085.jpg',14.50),
+('P105','The Giving Tree','Once there was a tree...','https://images.gr-assets.com/books/1174210942l/370493.jpg',32.00),
+('P106','The Da Vinci Code','An ingenious code hidden in works of Leonardo','https://images.gr-assets.com/books/1303252999l/968.jpg',14.50),
+('P107','The Alchemist','Paulo Coelho''s masterpiece tells the mystical story','https://images.gr-assets.com/books/1483412266l/865.jpg',12.00),
+('P108','Charlotte''s Web','Classic children''s literature','https://images.gr-assets.com/books/1439632243l/24178.jpg',14.00),
+('P109','The Little Prince','Most translated book in French language','https://images.gr-assets.com/books/1367545443l/157993.jpg',16.50),
+('P110','A Thousand Splendid Suns','Story set against events of Afghanistan','https://images.gr-assets.com/books/1345958969l/128029.jpg',15.50),
+('P111','A Game of Thrones','First volume of George R. R. Martin cycle','https://images.gr-assets.com/books/1436732693l/13496.jpg',32.00),
+('P112','The Book Thief','Nazi Germany story','https://images.gr-assets.com/books/1522157426l/19063.jpg',30.00),
+('P113','One Flew Over the Cuckoo''s Nest','Mental hospital story','https://images.gr-assets.com/books/1516211014l/332613.jpg',23.00),
+('P114','Fifty Shades of Grey','Interview with Christian Grey','https://images.gr-assets.com/books/1385207843l/10818853.jpg',27.00);
