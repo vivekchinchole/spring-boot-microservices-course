@@ -4,8 +4,6 @@ import com.example.bookstore.catalog.exception.ProductNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/products")
 class ProductController {
@@ -22,11 +20,9 @@ class ProductController {
         return productService.getProducts(pageNo);
     }
 
-
-
     @GetMapping("/{code}")
     ResponseEntity<Product> getProductByCode(@PathVariable String code) {
-    //    log.info("Fetching product for code: {}", code);
+        //    log.info("Fetching product for code: {}", code);
         return productService
                 .getProductByCode(code)
                 .map(ResponseEntity::ok)
