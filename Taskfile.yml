@@ -1,0 +1,91 @@
+#version: '3'
+#
+#vars:
+#  GOOS: "{{default OS .GOOS}}"
+#  MVNW: '{{if eq .GOOS "windows"}}mvnw.cmd{{else}}./mvnw{{end}}'
+#  DOCKER_USERNAME: "vivekchinchole"
+#  TAG: "latest"
+#  DC_DIR: "deployment/docker-compose"
+#  INFRA_DC_FILE: "{{.DC_DIR}}/infra.yml"
+#  APPS_DC_FILE: "{{.DC_DIR}}/apps.yml"
+#  SLEEP_CMD: '{{if eq .GOOS "windows"}}timeout{{else}}sleep{{end}}'
+#
+#tasks:
+#
+#  default:
+#    cmds:
+#      - task: test
+#
+#  format:
+#    desc: Format code using Spotless
+#    cmds:
+#      - "{{.MVNW}} spotless:apply"
+#
+#  test:
+#    desc: Run tests
+#    deps: [format]
+#    cmds:
+#      - "{{.MVNW}} clean verify"
+#
+#  build:
+#    desc: Build all microservice Docker images
+#    cmds:
+#      - "{{.MVNW}} -pl catalog-service spring-boot:build-image -DskipTests"
+##      - "{{.MVNW}} -pl order-service spring-boot:build-image -DskipTests"
+##      - "{{.MVNW}} -pl notification-service spring-boot:build-image -DskipTests"
+##      - "{{.MVNW}} -pl api-gateway spring-boot:build-image -DskipTests"
+##      - "{{.MVNW}} -pl bookstore-webapp spring-boot:build-image -DskipTests"
+#
+#  push:
+#    desc: Push all Docker images to Docker Hub
+#    cmds:
+#      - "docker push {{.DOCKER_USERNAME}}/catalog-service:{{.TAG}}"
+##      - "docker push {{.DOCKER_USERNAME}}/order-service:{{.TAG}}"
+##      - "docker push {{.DOCKER_USERNAME}}/notification-service:{{.TAG}}"
+##      - "docker push {{.DOCKER_USERNAME}}/api-gateway:{{.TAG}}"
+##      - "docker push {{.DOCKER_USERNAME}}/bookstore-webapp:{{.TAG}}"
+#
+#  build_and_push:
+#    desc: Build and push all images
+#    deps: [build]
+#    cmds:
+#      - task: push
+#
+#  start_infra:
+#    desc: Start infrastructure (MySQL, Kafka, etc.)
+#    cmds:
+#      - "docker compose -f {{.INFRA_DC_FILE}} up -d"
+#
+#  stop_infra:
+#    desc: Stop infrastructure
+#    cmds:
+#      - "docker compose -f {{.INFRA_DC_FILE}} down"
+#
+#  start:
+#    desc: Start full system (infra + apps)
+#    deps: [build]
+#    cmds:
+#      - "docker compose -f {{.INFRA_DC_FILE}} -f {{.APPS_DC_FILE}} up -d"
+#
+#  stop:
+#    desc: Stop full system
+#    cmds:
+#      - "docker compose -f {{.INFRA_DC_FILE}} -f {{.APPS_DC_FILE}} down"
+#
+#  restart:
+#    desc: Restart full system
+#    cmds:
+#      - task: stop
+#      - task: sleep
+#      - task: start
+#
+#  clean:
+#    desc: Remove unused Docker images
+#    cmds:
+#      - "docker system prune -f"
+#
+#  sleep:
+#    vars:
+#      DURATION: "{{default 5 .DURATION}}"
+#    cmds:
+#      - "{{.SLEEP_CMD}} {{.DURATION}}"
