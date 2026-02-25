@@ -21,10 +21,10 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Setup Java 17
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
@@ -33,7 +33,7 @@ jobs:
       - name: Make Maven wrapper executable
         run: chmod +x mvnw
 
-      - name: Build with Maven
+      - name: Build with Maven (Skip Tests)
         run: ./mvnw -ntp clean package -DskipTests
 
       - name: Login to Docker Hub
@@ -55,6 +55,6 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            docker pull $DOCKER_IMAGE_NAME
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-catalog-service:latest
             docker compose down
             docker compose up -d
